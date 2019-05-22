@@ -8,60 +8,25 @@
     <body>
         <h1>Apple Store</h1>
         <div class="contenedor">
-            <div class="imagen actual">
-                <img src="imagenes/logo.png"/>
-            </div>
-            <div class="imagen">
-                <img src="imagenes/foto1.jpg"/>
-            </div>
-            <div class="imagen">
-                 <img src="imagenes/foto2.jpg"/>
-            </div>
-            <div class="imagen">
-                <img src="imagenes/foto3.jpg"/>
-            </div>
-            <div class="imagen">
-                <img src="imagenes/foto4.jpg"/>
-            </div>
-            <div class="imagen">
-                <img src="imagenes/foto5.png"/>
-            </div>
-            <div class="imagen">
-                <img src="imagenes/foto6.jpg"/>
-            </div>
-            <div class="imagen">
-                <img src="imagenes/foto7.jpg"/>
-            </div>
-            <div class="imagen">
-                <img src="imagenes/foto8.jpg"/>
-            </div>
-            <div class="imagen">
-                <img src="imagenes/foto9.jpg"/>
-            </div>
+            <section>
+                <div id="imagenes">
+                    <img id="0" class="foto" src=" ">
+                    <img id="1" class="foto" src=" ">
+                    <img id="2" class="foto" src=" ">
+                    <img id="3" class="foto" src=" ">
+                    <img id="4" class="foto" src=" "> 
+                </div>
+            </section>
 
-            <a href="#" class="anterior" onclick="anterior()"> &#10094 </a>
-            <a href="#" class="siguiente" onclick="siguiente()"> &#10095 </a>
+            <button id="anterior" class="anterior" onclick="plusDivs(-1)">&#10094;</button>
+			<button id="siguiente" class="siguiente" onclick="plusDivs(+1)">&#10095;</button>
+           
 
-            <div class="puntos">
-                <span class="punto activo" onclick="mostrar(0);"></span>
-                <span class="punto" onclick="mostrar(1);"></span>
-                <span class="punto" onclick="mostrar(2);"></span>
-                <span class="punto" onclick="mostrar(3);"></span>
-                <span class="punto" onclick="mostrar(4);"></span>
-                <span class="punto" onclick="mostrar(5);"></span>
-                <span class="punto" onclick="mostrar(6);"></span>
-                <span class="punto" onclick="mostrar(7);"></span>
-                <span class="punto" onclick="mostrar(8);"></span>
-                <span class="punto" onclick="mostrar(9);"></span>
-            </div>
 
-            <div class="boton">
-                <a href="#">
-                    <img class="imgBoton" id="btn" src="imagenes/play.png" />
-                    <img class="imgBoton" id="btn" src="imagenes/pause.png"/>
-                </a>
-            </div>
+            
         </div>
+
+        <button id="centro" class="button" onclick="iniciar()">INICIAR</button>
     </body>
 
 </html>

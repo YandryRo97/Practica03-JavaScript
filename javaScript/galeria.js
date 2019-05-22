@@ -1,60 +1,49 @@
+var slideIndex = 1;
+showDivs(slideIndex);
 
-var actual = 0;
-var velocidad = 2000;
-
-var fotos = new Array
-("imagenes/logo.png","imagenes/foto1.jpg","imagenes/foto2.jpg","imagenes/foto3.jpg","imagenes/foto4.jpg",
-"imagenes/foto5.jpg","imagenes/foto6.jpg","imagenes/foto7.jpg","imagenes/foto8.jpg","imagenes/foto9.jpg");
+/*window.onload = function() {
+	
+}
+*/
 
 
+function iniciar() {
+	slideIndex = 1;
+	showDivs(1);
+	array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+	var val;
+	for(i = 0; i < 5; i++) 
+		array.splice(Math.floor(Math.random() * array.length), 1);
 
-function puntos(n) {
-    var punto = document.getElementsByClassName("punto")
-    for(i=0; 1<punto.length; i++){
-        if(punto[i].className.includes("activo")){
-            punto[i].className = punto[i].className.replace("activo", "");
-            break;
-        }
-    }
-    punto [n].className += " activo";
+	shuffle(array);
+
+	for(i = 0; i < 5; i++) 
+		document.getElementById(i).src = "imagenes/"+ array[i] +".jpg";
 }
 
-function mostrar(n){
-    var imagenes = document.getElementsByClassName("imagen");
-    for(i=0; i<imagenes.length; i++){
-        if(imagenes[i].className.includes(" actual")){
-            imagenes[i].className = imagenes[i].className.replace(" actual","");
-            break;
-        }
-    }
-    actual = n;
-    imagenes[n].className += " actual";
-    puntos(n);
+function plusDivs(n) {
+	showDivs(slideIndex += n);
 }
 
-function siguiente(){
-    actual++;
-    if(actual > 9){
-        actual = 9;
-    }
-    mostrar(actual);
+function showDivs(n) {
+	var i;
+	var x = document.getElementsByClassName("foto");
+	if (n == x.length)
+		document.getElementById('siguiente').disabled = true;
+	else
+		document.getElementById('siguiente').disabled = false;
+
+	if (n == 1) 
+		document.getElementById('anterior').disabled = true;
+	else
+		document.getElementById('anterior').disabled = false
+
+	for (i = 0; i < x.length; i++)
+		x[i].style.display = "none";
+
+	x[slideIndex-1].style.display = "block"; 
 }
 
-function anterior(){
-    actual--;
-    if(actual < 0){
-        actual = 0;
-    }
-    mostrar(actual);
+function shuffle(array) {
+  array.sort(() => Math.random() - 0.5);
 }
-
-/*var play = setInterval("siguiente ()",velocidad);
-
-function playPause(){
-    var boton = document.getElementById("btn");
-    if (play == null ){
-        
-    }
-}*/
-
-
