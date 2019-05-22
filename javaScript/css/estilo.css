@@ -1,0 +1,91 @@
+body{
+    padding: 50px 250px;
+    background-color: gray;
+}
+
+h1{
+    text-align: center;
+}
+
+.contenedor {
+    position: relative;
+    width: 800px;
+    height: 400px;
+    background-color: black;
+    border-radius: 15px;
+}
+
+
+.imagen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.imagen img {
+    height: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.contenedor a {
+    position: absolute;
+    text-decoration: none;
+    color: white;
+    font-size: 36px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.siguiente {
+    left: 97%;
+}
+
+.boton {
+    position: absolute;
+    top: 10%;
+    left: 95%;
+}
+.imgBoton{
+    width: 25px;
+    height: 25px;
+}
+
+.puntos{
+    position: absolute;
+    top: 90%;
+    width: 800px;
+    text-align: center;
+}
+ 
+.punto {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-color: gray;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.punto:hover {
+    cursor: pointer;
+    background-color: rgb(92, 56, 56);
+    text-align: center;
+}
+
+.contenedor a:hover {
+    color: gray;
+}
+
+.actual {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 1s, opacity
+}
+
+.activo {
+    background-color: rgb(92, 56, 56);
+}

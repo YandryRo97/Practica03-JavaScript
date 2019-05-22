@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>Calculadora</title>
+        <script type="text/javascript" src="js/funciones.js"></script>
+        <link rel="stylesheet" href="css/styless.css" type="text/css"/>
+    </head>
+    <body >
+        <script type="text/javascript">
+            document.write("<h1>Calculadora</h1>")
+        </script>
+        <noscript>
+            Your browser doesn't support or has disabled JavaScript
+        </noscript>
+        <div class="calculadora">
+        <form>
+            <p id="textoPantalla">0</p>
+            <p>
+                <input type="button" id="borrar" value="←" onclick="borra()" />
+                <input type="button" id="CE" value="CE" onclick="borradoParcial()"/>
+                <input type="button" id="C" value="C" onclick="borradoTotal()"/>
+                <input type="button" id="masMenos" value="±" onclick="opuest()"/>
+                <input type="button" value="√" onclick="raizc()" />
+            </p>
+            <p>
+                <input type="button" id="siete" value="7" onclick="numero('7')"/>
+                <input type="button" id="ocho" value="8" onclick="numero('8')"/>
+                <input type="button" id="nueve" value="9"onclick="numero('9')"/>
+                <input type="button" id="dividir" value="/" onclick="operar('/')"/>
+                <input type="button" id="porcentaje" value="%" onclick="porcent()"/>   
+            </p>
+            <p>
+                <input type="button" id="cuatro" value="4" onclick="numero('4')"/>
+                <input type="button" id="cinco" value="5" onclick="numero('5')"/>
+                <input type="button" id="seis" value="6"onclick="numero('6')"/>
+                <input type="button" id="multiplicar" value="*" onclick="operar('*')"/>
+                <input type="button" id="unoX" value="1/x" onclick="inve()"/>
+            </p>
+            <p>
+                <input type="button" id="uno" value="1" onclick="numero('1')"/>
+                <input type="button" id="dos" value="2"onclick="numero('2')"/>
+                <input type="button" id="tres" value="3" onclick="numero('3')"/>
+                <input type="button" class="largo2" id="restar" value="-" onclick="operar('-')"/>
+            </p>
+            <p>
+                <input type="button" class="largo" id="cero" value="0" onclick="numero('0')"/>
+                <input type="button" id="punto" value="." onclick="numero('.')"/>
+                <input type="button" id="sumar" value="+" onclick="operar('+')"/>
+                <input type="button" class="largo" id="igual" value="=" onclick="igualar()"/>
+            </p>
+        </form>
+    </div>
+    </body>
+</html>
