@@ -1,139 +1,128 @@
 function validar(){
-    var banderaT= validarTelefono()
-    var banderaC = validarCedula()
-    var banderaE = validarCorreo()
-    var banderaF = validarFecha()
-    var bandera= validarCamposObligatorios()
-    
-    if(banderaT == false){
-        alert("Telefono Incorrecto")
-    }
-    if(banderaC == false){
-        alert("Cedula Incorrecta")
-    }
-    if(bandera == false){
-        alert("Llenar Campos")
-    }
-    if(banderaE == false){
-        alert("El correo debe tener mas de tres caracteres antes del @ y tener el  dominio ups.edu.ec")
-    }
-    if(banderaF == false){
-        alert("Fecha Incorretca su fecha debe estar con el formato yyy-mm-dd o su fecha no es valida")
-    }
-    if(banderaT== false || banderaC == false || bandera == false || banderaF == false){
-        return false
-    }
-    
-}
 
-function validarCamposObligatorios(){
-    var bandera = true
-    for(var i = 0; i < document.forms[0].length ; i++){
-        var elemento = document.forms[0].elements[i]
-        if(elemento.value.trim() == ''){
-            bandera=false
-            if(elemento.id == 'cedula' || elemento.id == 'telefono' || elemento.id == 'correo' || elemento.id == 'nombres' || elemento.id == 'apellidos' || elemento.id == 'contrasena' || elemento.id == 'fechaNacimiento' || elemento.id == 'direccion' ){
-                elemento.style.background ='rgba(194, 32, 32,0.7)'
-                elemento.style.color = 'white'
-                elemento.value ="Llenar"
-            }
-            
+    var bandera = false;
+
+    for (var i = 0; i<document.forms[0].length; i++){
+        var elemento = document.forms[0].elements[i];
+        if (elemento.value.trim() == ''){
+            bandera = true;
+            elemento.classList.add('error');
+            break;
         }
     }
-    if(bandera == true){
-        return true
-    }else{
-        return false
-    }
-}
 
-function validarLetras(frase,identificador){
-    var palabra =frase.value.substring(frase.value.length-1,frase.value.length).charCodeAt()
-    var x = document.getElementById(identificador)
-    if((palabra >=65 && palabra <= 90)||(palabra >=97 && palabra <= 122) || palabra ==32){
-    }else{
-        x.value = x.value.substring(0,x.value.length-1) 
-    }
-}
+    if (bandera == true){
 
-function validarNumeros(numero,idNum){
-    var palabra =numero.value.substring(numero.value.length-1,numero.value.length).charCodeAt()
-    var x = document.getElementById(idNum)
-    if((palabra >=48 && palabra <= 57)){
-    }else{
-        x.value = x.value.substring(0,x.value.length-1) 
-    }
-}
+        alert('Llenar todos los campos');
+        document.getElementById('p').classList.add('p');
+        return false;
 
-function validarTelefono(){
-    var x =document.getElementById("telefono").value
-    if(x.length == 10){
-        return true
-    }else{
-        return false
-    }
-}
-
-function validarCedula(){
-     var x =document.getElementById("cedula").value
-     var total = 0;
-     var longitud = x.length;
-     var longcheck = longitud - 1;
-    if(longitud == 10){
-        for(i = 0; i < longcheck; i++){
-            if (i%2 === 0) {
-              var aux = x.charAt(i) * 2;
-              if (aux >= 10) aux -= 9;
-              total += aux;
-            } else {
-              total += parseInt(x.charAt(i));
-            }
+    } else {
+        var fecha = validarFecha();
+        var cedula = validarCedula();
+        var correo = validarCorreo();
+        if (fecha || cedula || correo) {
+            return false;
+        } else {
+            return true;
         }
-        total = total % 10 !=0 ? 10 - total % 10 : 0;
 
-        if (x.charAt(longitud-1) == total) {
-            
-            return true
-        }else{
-            alert("Su cedula no corresponde a ecuador")
-            return false
-        }
-    }else{
-        return false
     }
 }
-                
-function validarCorreo(){
-    var x = document.getElementById("correo").value
-    var correo = x.split("@")
-    if(x == correo){
-    }if(correo[0].length <= 3 ){
-        return false
-    }else if(correo[1] != "ups.edu.ec"){
-        return false
-    }else{
-        return true
+
+//Quita los mensajes de error por datos incompletos en cuanto el usuario ingresa valores
+function escribe(elemento) {
+    elemento.classList.remove('error');
+    document.getElementById('p').classList.remove('p');
+}
+
+//Valida que solo se ingresen números
+function val_numero(string){
+    var out = '';
+    var filtro = '1234567890';//Caracteres validos
+    
+    //Recorre el value y verifica si el caracter se encuentra en la lista de validos 
+    for (var i = 0; i < string.length; i++)
+        if (filtro.indexOf(string.charAt(i)) != -1) 
+        //Se añaden a la salida los caracteres validos
+        out += string.charAt(i);
+    
+    //Retornar el valor filtrado
+    return out;
+} 
+
+//Valida que solo se ingresen letras
+function val_letra(string){
+    var out = '';
+    var filtro = 'abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ ';//Caracteres validos
+    
+    //Recorre el value y verifica si el caracter se encuentra en la lista de validos 
+    for (var i = 0; i < string.length; i++)
+        if (filtro.indexOf(string.charAt(i)) != -1) 
+        //Se añaden a la salida los caracteres validos
+        out += string.charAt(i);
+    
+    //Retorna el valor filtrado
+    return out;
+} 
+
+//Permite que sólo se ingresen dos valores
+function dos_valores(string) {
+    var out = '';
+    var array = string.split(' ');
+    if (array.length == 1){
+        out += array[0];
+    } else {
+        out += array[0] + ' ' + array[1];
     }
     
+    return out;
 }
 
-
-
-function validarFecha(){
-    var x = document.getElementById("fechaNacimiento").value
-    var regEx = /^\d{4}-\d{2}-\d{2}$/;
-  if(!x.match(regEx))return false;
-  var fecha = new Date(x)
-  var anio = fecha.getFullYear()
-  var mes = fecha.getMonth()
-  var dia = fecha.getDay(
-  )
-  if(anio > 2019 || anio < 1900) return false;
-  if (mes < 1 || mes > 12) return false;
-  else if (dia < 1 || dia> 31) return false;
-  else if ((mes==4 || mes==6 || mes==9 || mes==11) && dtDay ==31) return false;
-  else if (mes == 2) {
-        var bisiesto = (anio % 4 == 0 && (anio% 100 != 0 || anio % 400 == 0));
-        if (dia> 29 || (dia ==29 && !isleap)) return false;
+function validarFecha() {
+    var array = document.getElementById('fec').value.split('/');
+    var fecha = new Date(array[2], array[1], array[0]);
+    if (array.length == 3 && fecha 
+        && array[0] == fecha.getDate() 
+        && array[1] == fecha.getMonth() 
+        && array[2] == fecha.getFullYear()) {
+        return false;
+    } else {
+        document.getElementById('fec').classList.add('error');
+        document.getElementById('f').classList.add('p');
+        alert('Fecha mal ingresada, usar formato dd/mm/yyyy');
+        return true; //Inválida
     }
+}
+
+function validarCedula() {
+    var cedula = document.getElementById('ced').value.trim();
+    if (cedula.substring(0, 2) > 24) {
+        document.getElementById('ced').classList.add('error');
+        document.getElementById('c').classList.add('p');
+        alert('Cédula no válida');
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function validarCorreo() {
+    var array = document.getElementById('ema').value.split('@');
+
+    if(array[0].length < 3) {
+        document.getElementById('ema').classList.add('error');
+        alert('Correo no válido')
+        return true;
+    } else {
+        if (!(array[1] == 'ups.edu.ec') && !(array[1] == 'est.ups.edu.ec')) {
+            document.getElementById('ema').classList.add('error');
+            document.getElementById('e').classList.add('p');
+            alert('Extensión no válida')
+            return true;
+        } else {
+            return false;
+        }
+        
+    } 
 }

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Crear Usuario</title>
     <script type="text/javascript" src="js/validar.js"></script>
+    <link rel="stylesheet" rel="stylesheet" href="css/estilo.css">
     <style type="text/css">
         .error{
             color: red;
@@ -14,37 +15,37 @@
 <body>
     <form id="formulario01" method="post"  onsubmit="return validarCamposObligatorios()">
         <label for="cedula">Cedula: </label>
-        <input type="text" id="cedula" name="cedula" value="" placeholder="Ingrese su cedula" onkeyup=" return validarNumeros(this)"
+        <input type="text" id="cedula" name="cedula" value="" placeholder="Ingrese su cedula" onfocus="escribe(this)" onkeyup="this.value = val_numero(this.value)">
         <span id="MensajeCedula" class="error"></span>
         <br>
         
         <label for="nombres">Nombres: </label>
-        <input type="text" id="nombres" name="nombres" value="" placeholder="Ingrese sus dos nombres" onkeyup="return validarLetras(this)">
+        <input type="text" id="nombres" name="nombres" value="" placeholder="Ingrese sus dos nombres" onfocus="escribe(this)" onkeyup="this.value = val_letra(this.value)" onchange="this.value = dos_valores(this.value)">
         
         <br>
         
         <label for="apellidos">Apellidos: </label>
-        <input type="text" id="apellidos" name="apellidos" value="" placeholder="Ingrese sus apellidos" >
+        <input type="text" id="apellidos" name="apellidos" value="" placeholder="Ingrese sus apellidos" onfocus="escribe(this)" onkeyup="this.value = val_letra(this.value)" onchange="this.value = dos_valores(this.value)">
         
         <br>
         
         <label for="direccion">Dirección: </label>
-        <input type="text" id="direccion" name="direccion" value="" placeholder="Ingrese su dirección" >
+        <input type="text" id="direccion" name="direccion" value="" placeholder="Ingrese su dirección" onfocus="escribe(this)" onkeyup="this.value = val_letra(this.value)" onchange="this.value = dos_valores(this.value)">
         
         <br>
         
         <label for="telefono">Teléfono: </label>
-        <input type="text" id="telefono" name="telefono" value="" placeholder="Ingrese su número de teléfono" onkeyup="return validarTelefono()">
+        <input type="text" id="telefono" name="telefono" value="" placeholder="Ingrese su número de teléfono" onfocus="escribe(this)" onkeyup="this.value = val_numero(this.value)">
         
         <br>
         
         <label for="fechaNacimiento">Fecha de Nacimiento: </label>
-        <input type="date" id="fechaNacimiento" name="fechaNacimiento" value="" >
+        <input type="date" id="fechaNacimiento" name="fechaNacimiento" value="" onfocus="escribe(this)">
         
         <br>
         
         <label for="correo">Correo: </label>
-        <input type="email" id="correo" name="correo" value="" placeholder="Ingrese su correo electrónico" onkeyup="return validarCorreo()" >
+        <input type="email" id="correo" name="correo" value="" placeholder="Ingrese su correo electrónico" onfocus="escribe(this)" >
         
         <br>
         
